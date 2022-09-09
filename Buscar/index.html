@@ -25,7 +25,7 @@
     </nav>
   </header>
   
-  <form  class="container form" method="post" onsubmit="return Buscar();">
+  <form class="container form" method="post" onsubmit="return Modificar();">
     <div class="filter">
       <p class="filter__instruction">Filtrar por</p>
       <div class="controls">
@@ -48,8 +48,9 @@
       </div>
     </div>
     <input class="search__input" type="text" id="search" name="search" placeholder="Busque Aquí">
-    <input class="form__submit" type="submit" name="submit" value="Buscar Usuario(s)">
-  </form>
+    <input class="form__submit" type="button" name="submit" value="Buscar Usuario(s)" onclick="return Buscar();">
+  
+
   <table class="list-users" border="1">
     <thead class="list-users__thead">
       <tr class="list-users__tr">
@@ -57,18 +58,17 @@
         <th class="list-users__th" id="list-users__surname"> Email </th>
         <th class="list-users__th" id="list-users__email"> CodCurso   </th>
         <th class="list-users__th" id="list-users__id"> ID  </th>
-        <th class="list-users__th" id="list-users__id"> Seleccionar       </th>
+        <!-- <th class="list-users__th" id="list-users__id"> Seleccionar       </th> -->
       </tr>
     </thead>
-    <tbody class="list-users__tbody">
-    </tbody>
+        <tbody class="list-users__tbody">
+          <!-- ACA VAN LOS RESULTADOS DE BUSQUEDA -->
+          
+        </tbody>
   </table>
-
-  <table>
-    <tr>
-      <th><input type="text" name="y" id="y" style="background-color: beige;"></th>
-    </tr>
-  </table>
+  <!-- <input type="text" value="Modificar" name="Modificar"> -->
+  <input class="form__submit" type="submit" name="submit" value="Actualizar Dato(s)">
+</form>
 
   <footer class="footer">
     <div class="links">

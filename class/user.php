@@ -3,6 +3,24 @@
 
 validate();
 
+function get_users_keys_selected_modify(){
+  $search = $_POST['search']; 
+
+  $users = user::find($search);
+  $users_keys = array(array(),array(),array());
+
+  foreach($users as $user){
+    $ID=$user['ID'];
+
+    $users_keys[$ID]['userid']=$ID;
+    $users_keys[$ID]['username']=$_POST['nameuser'.$ID];
+    $users_keys[$ID]['usermail']=$_POST['mailuser'.$ID];
+    $users_keys[$ID]['usercode']=$_POST['coduser'.$ID];
+
+  }
+  return $users_keys;
+}
+
 function get_users_keys_selected(){
     
   $search = $_POST['search'];
@@ -52,12 +70,18 @@ function validate(){
       $users;
 
       $users = user::find($search);
-
+      $pathname="Modificar"
       echo json_encode($users); // codigo de capa logica no interactua con la capa interfaz, <echo> no va.
     }
 
-    else if($pathname=="Modificar"){
-      $query='UPDATE t_alumnos_del_curso SET  WHERE ID=:id';
+    else($pathname=="Modificar"){
+      //$query='UPDATE t_alumnos_del_curso SET  WHERE ID=:id';
+      $users_key_selected_modify=get_users_keys_selected_modify();
+      
+      foreach($users_key_selected_modify as $user_key_selected_modify){
+        user::modify($user_key_selected_modify);
+      }
+      //echo json_encode("hola");
     }
 
     else{
@@ -116,6 +140,20 @@ class user{
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':user_key', $user['ID']);
     
+    return $stmt->execute() ? true : null;
+  }
+  public static function modify($user_to_mod){
+
+    include '../database/database.php';
+
+    $query='UPDATE t_alumnos_del_curso SET NombreDelUsuario=:username, Mail=:usermail, Codigo_Curso=:usercod WHERE ID=:userid';
+
+    $stmt=$connection->prepare($query);
+    $stmt->bindParam('username',$user_to_mod['username']);
+    $stmt->bindParam(':usermail',$user_to_mod['usermail']);
+    $stmt->bindParam(':usercod',$user_to_mod['usercode']);
+    $stmt->bindParam(':userid',$user_to_mod['userid']);
+
     return $stmt->execute() ? true : null;
   }
   public static function find($search){

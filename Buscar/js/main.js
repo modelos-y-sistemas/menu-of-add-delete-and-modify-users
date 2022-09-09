@@ -33,11 +33,11 @@ function Buscar(){
           var tabla;
           for(var i=0;i<resp.length;i++){
             //<form method="post" onsubmit="Modificar();">
-              tabla+='<tr class="list-users__tr"><form method="post" onsubmit="return Modificar();"><td class="list-users__td"><input type="text" onClick="this.select();" name="nameuser" style="background-color: beige; border: 0;" value="'+resp[i].NombreDelUsuario+
-              '"></td><td class="list-users__td"><input type="text" onClick="this.select();" name="mailuser" style="background-color: beige; border: 0;" value="'+resp[i].Mail+
-              '"></td><td class="list-users__td"><input type="text" onClick="this.select();" name="coduser" style="background-color: beige; border: 0;" value="'+resp[i].Codigo_Curso+
+              tabla+='<tr class="list-users__tr"><td class="list-users__td"><input type="text" onClick="this.select();" name="nameuser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].NombreDelUsuario+
+              '"></td><td class="list-users__td"><input type="text" onClick="this.select();" name="mailuser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].Mail+
+              '"></td><td class="list-users__td"><input type="text" onClick="this.select();" name="coduser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].Codigo_Curso+
               '"></td><td class="list-users__td" name="iduser">'+resp[i].ID+
-              '</td><td class="list-users__td"><input class="form__submit" type="submit" name="submit" value="Actualizar Dato(s)"></td></form></tr>';
+              '</td></tr>';
           }
           /*var p=document.getElementsByClassName("list-users__tbody");
           p.html(tabla);*/
@@ -48,7 +48,18 @@ function Buscar(){
 }
 
 function Modificar(){
-  alert("hola");
+  alert("holainicio");
+  //var pathname = "Modificar";
+  $.ajax({
+    url: "http://localhost/menu-of-add-delete-and-modify-users/class/user.php",
+    type: "post",
+    data: $('#form').serialize(),
+    success: function(data){
+      //var resp=JSON.parse(data);
+      //Buscar();
+      alert("yy");
+    }
+  });
   /*var td=document.querySelectorAll('td');
   var val=document.getElementsByClassName('list-users__td').value;
   td.forEach(i => {
@@ -60,6 +71,8 @@ function Modificar(){
   /*var input=document.createElement("input");
   input.type="text";
   td.appendChild(input);*/
+  //Buscar();
+  //alert("holafinal");
   return false;
 }
 
