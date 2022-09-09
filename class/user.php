@@ -56,6 +56,10 @@ function validate(){
       echo json_encode($users); // codigo de capa logica no interactua con la capa interfaz, <echo> no va.
     }
 
+    else if($pathname=="Modificar"){
+      $query='UPDATE t_alumnos_del_curso SET  WHERE ID=:id';
+    }
+
     else{
 
       try{

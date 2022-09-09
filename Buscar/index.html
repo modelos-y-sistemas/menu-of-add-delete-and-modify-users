@@ -18,14 +18,14 @@
   
   <header class="header">
     <nav class="nav">
-      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/."> Volver al menú </a>
-      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/Agregar/."> Agregar </a>
-      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/Buscar/."> Buscar </a>
-      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/Eliminar/."> Eliminar </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/."> Volver al menú </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Agregar/."> Agregar </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Buscar/."> Buscar </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Eliminar/."> Eliminar </a>
     </nav>
   </header>
   
-  <form  class="container form" method="post" onsubmit="state(event);">
+  <form  class="container form" method="post" onsubmit="return Buscar();">
     <div class="filter">
       <p class="filter__instruction">Filtrar por</p>
       <div class="controls">
@@ -50,17 +50,24 @@
     <input class="search__input" type="text" id="search" name="search" placeholder="Busque Aquí">
     <input class="form__submit" type="submit" name="submit" value="Buscar Usuario(s)">
   </form>
-  <table class="list-users">
+  <table class="list-users" border="1">
     <thead class="list-users__thead">
       <tr class="list-users__tr">
         <th class="list-users__th" id="list-users__name"> Nombre   </th>
-        <th class="list-users__th" id="list-users__surname"> Apellido </th>
-        <th class="list-users__th" id="list-users__email"> Email   </th>
-        <th class="list-users__th" id="list-users__id"> ID       </th>
+        <th class="list-users__th" id="list-users__surname"> Email </th>
+        <th class="list-users__th" id="list-users__email"> CodCurso   </th>
+        <th class="list-users__th" id="list-users__id"> ID  </th>
+        <th class="list-users__th" id="list-users__id"> Seleccionar       </th>
       </tr>
     </thead>
     <tbody class="list-users__tbody">
     </tbody>
+  </table>
+
+  <table>
+    <tr>
+      <th><input type="text" name="y" id="y" style="background-color: beige;"></th>
+    </tr>
   </table>
 
   <footer class="footer">

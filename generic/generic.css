@@ -102,8 +102,16 @@ body{
   width:         var(--search_input__width        );
   font-size:     var(--search_input__font-size    );
 }
-
 .list-users{
+	padding: 10px;
+	
+  background-color: beige;
+	font-family: arial;
+	font-size: 20px;
+	border-color: #926026;
+}
+
+/*.list-users{
 	background: beige;
 	border: solid black 4px;
   border-radius: 15px;
@@ -139,7 +147,7 @@ body{
   }
   #list-users__id{
     width: var(--list-users__id_width);
-  }
+  }*/
 
 .footer{
   display:         var(--footer__display        );
