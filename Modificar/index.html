@@ -20,12 +20,13 @@
     <nav class="nav">
       <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/."> Volver al menú </a>
       <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Agregar/."> Agregar </a>
-      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Buscar/."> Buscar </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Modificar/."> Modificar </a>
       <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-modify-users/Eliminar/."> Eliminar </a>
     </nav>
   </header>
-  
-  <form class="container form" method="post" onsubmit="return Modificar();">
+  <!--onsubmit="return Modificar();"
+  action="../class/modify.php"-->
+  <form class="container form" method="post" action="../class/modify.php">
     <div class="filter">
       <p class="filter__instruction">Filtrar por</p>
       <div class="controls">
@@ -58,6 +59,7 @@
         <th class="list-users__th" id="list-users__surname"> Email </th>
         <th class="list-users__th" id="list-users__email"> CodCurso   </th>
         <th class="list-users__th" id="list-users__id"> ID  </th>
+        <!-- <input type="text" name="Modificar" id="Modificar"> -->
         <!-- <th class="list-users__th" id="list-users__id"> Seleccionar       </th> -->
       </tr>
     </thead>

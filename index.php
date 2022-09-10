@@ -10,11 +10,21 @@
 <body>
   <div class="menu">
     <h1 class="menu__title"> MENU </h1>
-    <ul class="menu__list"> 
-      <li class="menu__item"><a href="Agregar/"  class="menu__link">Agregar Usuario </a></li>
-      <li class="menu__item"><a href="Buscar/"   class="menu__link">Buscar Usuario  </a></li>
-      <li class="menu__item"><a href="Eliminar/" class="menu__link">Eliminar Usuario</a></li>
-    </ul>
+    <br>
+
+    <nav id="menu">
+<!-- start menu -->
+<ul>
+ <li><a href="#">Elegir</a>
+<!-- start menu desplegable -->
+ <ul>
+ <li><a href="Agregar/">Añadir Usuario</a></li>
+ <li><a href="Modificar/">Modificar Usuario</a></li>
+ <li><a href="Eliminar/">Eliminar Usuario</a></li>
+ </ul>
+<!-- end menu desplegable -->
+<!-- end menu -->
+</nav>
   </div>
 </body>
 </html>

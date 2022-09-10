@@ -1,7 +1,8 @@
 var filter = document.querySelector('.filter');
 var checkes = filter.querySelectorAll('input[type="checkbox"]');
+window.onload(Buscar());
 
-checkes.forEach((check) => {
+/*checkes.forEach((check) => {
   check.addEventListener("change", () => {
     checkes.forEach(check => {
       label = filter.querySelector('#' + check.id.replace("inp", "lbl"));
@@ -15,7 +16,7 @@ checkes.forEach((check) => {
       }
     })
   })
-})
+})*/
 
 function Buscar(){
   var search=$('#search').val();
@@ -32,10 +33,9 @@ function Buscar(){
           var resp=JSON.parse(data);
           var tabla;
           for(var i=0;i<resp.length;i++){
-            //<form method="post" onsubmit="Modificar();">
               tabla+='<tr class="list-users__tr"><td class="list-users__td"><input type="text" onClick="this.select();" name="nameuser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].NombreDelUsuario+
               '"></td><td class="list-users__td"><input type="text" onClick="this.select();" name="mailuser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].Mail+
-              '"></td><td class="list-users__td"><input type="text" onClick="this.select();" name="coduser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].Codigo_Curso+
+              '"></td><td class="list-users__td"><input type="number" onClick="this.select();" name="coduser'+resp[i].ID+'" style="background-color: beige; border: 0;" value="'+resp[i].Codigo_Curso+
               '"></td><td class="list-users__td" name="iduser">'+resp[i].ID+
               '</td></tr>';
           }
@@ -48,16 +48,19 @@ function Buscar(){
 }
 
 function Modificar(){
-  alert("holainicio");
+  alert("holi");
   //var pathname = "Modificar";
   $.ajax({
-    url: "http://localhost/menu-of-add-delete-and-modify-users/class/user.php",
+    url: "http://localhost/menu-of-add-delete-and-modify-users/class/modify.php",
     type: "post",
     data: $('#form').serialize(),
     success: function(data){
       //var resp=JSON.parse(data);
       //Buscar();
-      alert("yy");
+      //alert("yy");
+      /*for(var i=0;i<resp.length;i++){
+      alert(resp[i].ID);
+      }*/
     }
   });
   /*var td=document.querySelectorAll('td');

@@ -1,25 +1,7 @@
 <?php
 
-
 validate();
 
-function get_users_keys_selected_modify(){
-  $search = $_POST['search']; 
-
-  $users = user::find($search);
-  $users_keys = array(array(),array(),array());
-
-  foreach($users as $user){
-    $ID=$user['ID'];
-
-    $users_keys[$ID]['userid']=$ID;
-    $users_keys[$ID]['username']=$_POST['nameuser'.$ID];
-    $users_keys[$ID]['usermail']=$_POST['mailuser'.$ID];
-    $users_keys[$ID]['usercode']=$_POST['coduser'.$ID];
-
-  }
-  return $users_keys;
-}
 
 function get_users_keys_selected(){
     
@@ -46,6 +28,13 @@ function get_users_keys_selected(){
 }
 
 function validate(){
+      /*$conexion=mysqli_connect("localhost","root","123456789","iac") or
+      die("Problemas con la conexión");
+
+
+      $query="UPDATE t_alumnos_del_curso SET NombreDelUsuario='q', Mail='q', Codigo_Curso=5 WHERE ID=1";
+
+      mysqli_query($conexion, $query) or die("Problemas en el select:".mysqli_error($conexion));*/
   if($_POST){
 
     $pathname=$_POST["pathname"];
@@ -64,26 +53,13 @@ function validate(){
         echo json_encode($resp);
       }
     }
-    
     else if($pathname=="Buscar"){
       $search = $_POST['search'];
       $users;
 
       $users = user::find($search);
-      $pathname="Modificar"
       echo json_encode($users); // codigo de capa logica no interactua con la capa interfaz, <echo> no va.
     }
-
-    else($pathname=="Modificar"){
-      //$query='UPDATE t_alumnos_del_curso SET  WHERE ID=:id';
-      $users_key_selected_modify=get_users_keys_selected_modify();
-      
-      foreach($users_key_selected_modify as $user_key_selected_modify){
-        user::modify($user_key_selected_modify);
-      }
-      //echo json_encode("hola");
-    }
-
     else{
 
       try{
@@ -142,26 +118,33 @@ class user{
     
     return $stmt->execute() ? true : null;
   }
-  public static function modify($user_to_mod){
+  /*public static function modify($user_to_mod){
 
     include '../database/database.php';
+    $conexion=mysqli_connect("localhost","root","123456789","iac") or
+    die("Problemas con la conexión");
 
-    $query='UPDATE t_alumnos_del_curso SET NombreDelUsuario=:username, Mail=:usermail, Codigo_Curso=:usercod WHERE ID=:userid';
 
-    $stmt=$connection->prepare($query);
-    $stmt->bindParam('username',$user_to_mod['username']);
-    $stmt->bindParam(':usermail',$user_to_mod['usermail']);
-    $stmt->bindParam(':usercod',$user_to_mod['usercode']);
-    $stmt->bindParam(':userid',$user_to_mod['userid']);
+    $query="UPDATE t_alumnos_del_curso SET NombreDelUsuario='q', Mail='q', Codigo_Curso=5 WHERE ID=1";
 
-    return $stmt->execute() ? true : null;
-  }
+    mysqli_query($conexion, $query) or die("Problemas en el select:".mysqli_error($conexion));
+    echo "El mail fue modificado con exito";
+
+
+    //$stmt=$connection->prepare($query);
+    /*$stmt->bindParam(':username',$_POST['nameuser1']);
+    $stmt->bindParam(':usermail',$_POST['mailuser1']);
+    $stmt->bindParam(':usercod',$_POST['codeuser1']);
+    $stmt->bindParam(':userid',1);*/
+
+    /*return $stmt->execute() ? true : null;
+  }*/
   public static function find($search){
 
     include '../database/database.php';
     
     $search = "%" . $search . "%";
-    $query = "SELECT * FROM t_alumnos_del_curso WHERE ID LIKE '$search' OR NombreDelUsuario LIKE '$search' OR Codigo_Curso LIKE '$search' OR Mail LIKE '$search' ";
+    $query="SELECT * FROM t_alumnos_del_curso WHERE ID LIKE '$search' OR NombreDelUsuario LIKE '$search' OR Codigo_Curso LIKE '$search' OR Mail LIKE '$search' ";
     $stmt = $connection->prepare($query);
     
     return ($stmt->execute()) ? $stmt->fetchAll(PDO::FETCH_ASSOC) : null;
