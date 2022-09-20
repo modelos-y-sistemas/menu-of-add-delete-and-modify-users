@@ -24,11 +24,11 @@
     </div>
     <div class="control">
       <label for="email">Ingrese e-mail</label>
-      <input type="text" name="email" id="email" require>
+      <input type="email" name="email" id="email" require>
     </div>
     <div class="control">
       <label for="codcurso">Ingrese codigo de curso</label>
-      <input type="text" name="codcurso" id="codcurso" require>
+      <input type="number" name="codcurso" id="codcurso" require>
     </div>
     
     <input class="form__submit" type="submit" value="Agregar Usuario" id="submit" require>

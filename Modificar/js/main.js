@@ -1,6 +1,6 @@
 var filter = document.querySelector('.filter');
 var checkes = filter.querySelectorAll('input[type="checkbox"]');
-window.onload(Buscar());
+//window.onload(Buscar());
 
 /*checkes.forEach((check) => {
   check.addEventListener("change", () => {
