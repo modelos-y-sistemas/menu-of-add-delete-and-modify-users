@@ -27,7 +27,7 @@ function get_users_keys_selected_modify(){
 
 function find($search){
 
-    $conexion=mysqli_connect("localhost","root","123456789","iac") or die("Problemas con la conexión");
+    $conexion=mysqli_connect("localhost","root","","iac") or die("Problemas con la conexión");
 
     
     $search = "%" . $search . "%";
@@ -41,7 +41,7 @@ function find($search){
 
 function modify($ID, $Name, $Mail, $Cod){
     
-    $conexion=mysqli_connect("localhost","root","123456789","iac") or
+    $conexion=mysqli_connect("localhost","root","","iac") or
     die("Problemas con la conexión");
     /*$ID=$usertomod['ID'];
     $nombre=$usertomod['Name'];
